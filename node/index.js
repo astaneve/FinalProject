@@ -24,122 +24,69 @@ app.get("/memberlist", async (req, res) => {
   });
 
   app.get("/memberlist/:id", async (req, res) => {
-
     try {
-  
       const id = Number(req.params.id);
-  
       if (Number.isInteger(id) || !req.params.id) {
-  
         const con = await mysql.createConnection(mysqlConfig);
-  
         const selectAll = "SELECT * FROM user_name";
-  
         const selectOne = `${selectAll} WHERE id=${id}`;
-  
         const response = await con.execute(id ? selectOne : selectAll);
-  
         res.send(response[0]);
-  
         await con.end();
-  
       } else {
-  
         res.status(400).send([]);
-  
       }
-  
     } catch (e) {
-  
       if (e.code === "ER_ACCESS_DENIED_ERROR") {
-  
         res.status(401).send("Unauthorized");
-  
       }
-  
       console.log(e);
-  
     }
-  
   });
   app.post("/memberlist", async (req, res) => {
-
     try {
-  
       const users = req.body;
-  
       if (users.id && users.name && users.email && users.age) {
-  
         const con = await mysql.createConnection(mysqlConfig);
-  
-  
-  
         const response = await con.execute(
-  
           `INSERT INTO user_name (id, name, email, age) values (${con.escape(
-  
             users.id
-  
           )}, ${con.escape(users.name)}, ${con.escape(users.email)}, ${con.escape(
-  
             users.age
-  
           )})`
-  
         );
   
         console.log(response);
-  
         res.send(response);
-  
         await con.end();
-  
       } else {
-  
         res.status(400).send("Bad syntax");
-  
       }
   
-    } catch (e) {
-  
-      console.log(e);
-  
+    } catch (e) { 
+      console.log(e); 
     }
   
   });
   app.delete("/memberlist/:id", async (req, res) => {
-
     try {
-  
       const con = await mysql.createConnection(mysqlConfig);
-  
       const response = await con.execute(
-  
         `DELETE FROM user_name WHERE id=${req.params.id};`
-  
       );
   
       res.send(response[0]);
-  
-      await con.end();
-  
+      await con.end(); 
     } catch (e) {
   
-      console.log(e);
-  
-    }
-  
+      console.log(e); 
+    } 
   });
-  app.get("*", (req, res) => {
 
-    res.status(404).send("Page not found:(");
-  
+  app.get("*", (req, res) => {
+    res.status(404).send("Page not found:(");  
   });
-  
-  
   
   app.listen(PORT, () => {
-  
     console.log(`Server is running on port ${PORT}`);
-  
   });

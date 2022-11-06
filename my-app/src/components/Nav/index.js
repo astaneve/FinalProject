@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+
 const Container = styled.div`
   padding: 20px 40px;
   border-bottom: 1px solid #e2e2e2;
@@ -13,7 +14,8 @@ const Container = styled.div`
   }`;
 
 const Logo = styled.div`
-  color: #eb5d05;
+  color: red;
+  font-family: 'Bradley Hand';
   font-size: 26px;
   font-weight: 500;
   @media (max-width: 600px) {
@@ -32,11 +34,11 @@ const NavBar = () => {
   return (
     <Container>
       <Logo>
-        <div>Helloveen party</div>
+        <div>X-tmas event</div>
       </Logo>
       <nav>
-        <StyledLink to="/">Members</StyledLink>
-        <StyledLink to="/medications">Add Members</StyledLink>
+        <StyledLink to="/">Member List</StyledLink>
+        <StyledLink to="/medications">Add Member</StyledLink>
       </nav>
     </Container>
   );
