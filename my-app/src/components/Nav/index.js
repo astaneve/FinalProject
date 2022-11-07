@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
+import Button from "../../components/Button";
 
 const Container = styled.div`
   padding: 20px 40px;
@@ -16,6 +16,7 @@ const Container = styled.div`
 const Logo = styled.div`
   color: red;
   font-family: 'Bradley Hand';
+  text-align: center;
   font-size: 26px;
   font-weight: 500;
   @media (max-width: 600px) {
@@ -23,7 +24,8 @@ const Logo = styled.div`
   }`;
 
   const StyledLink = styled(Link)`
-  color: #eb9605;
+  color: white;
+  font-family:'Oxygen';
   text-decoration: none;
   margin: 0 14px;
   &:hover {
@@ -34,11 +36,15 @@ const NavBar = () => {
   return (
     <Container>
       <Logo>
-        <div>X-tmas event</div>
+        <p>Secret Santa events</p>
       </Logo>
       <nav>
-        <StyledLink to="/">Member List</StyledLink>
-        <StyledLink to="/medications">Add Member</StyledLink>
+          <Button>
+        <StyledLink to="/members">Member List</StyledLink>
+        </Button>
+        <Button>
+        <StyledLink to="/add">Add Member</StyledLink>
+        </Button>
       </nav>
     </Container>
   );

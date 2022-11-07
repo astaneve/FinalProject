@@ -4,15 +4,17 @@ import NavBar from "../../components/Nav";
 import Button from "../../components/Button";
 
 
-const StyledText = styled.text`
+const Paragraph = styled.text`
 font-family: 'Bradley Hand';
 font-size: 23px;
 color: red;
 margin: 15px;
 display: flex;
 text-align: center;
-`
-;
+align-items: center;
+justify-content: center;
+`;
+
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
@@ -42,10 +44,16 @@ const AddMemberForm = (props) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [age, setAge] = useState("");
+
+   
+
     return (
       <div>
       <NavBar/>
-      <StyledText>Run Run As Fast As You Can!!!</StyledText>
+      <Paragraph>
+      <h1>Join The Party!!!</h1>
+    
+      </Paragraph>
       <StyledForm onSubmit={(e) => props.addMember(e, name, email, age)}>
         <InputContainer>
           <label>Member Name</label>
@@ -55,8 +63,8 @@ const AddMemberForm = (props) => {
             onChange={(e) => setName(e.target.value)}
           />
         </InputContainer>
-        <InputContainer>
 
+        <InputContainer>
 <label>Member email</label>
 <StyledInput
   type="email"
@@ -64,16 +72,20 @@ const AddMemberForm = (props) => {
   onChange={(e) => setEmail(e.target.value)}
 />
 </InputContainer>
+
 <InputContainer>
         <label>Member Age</label>
         <StyledInput
           type="number"
-          value={name}
+          value={age}
           onChange={(e) => setAge(e.target.value)}
         />
       </InputContainer>
+
       <Button variable="contained">Add ME</Button>
     </StyledForm>
+
+
     </div>
   );
 };

@@ -4,7 +4,7 @@ const Error = () => {
   return (
     <div className="error">
       <img
-        src="https://img.freepik.com/free-vector/404-error-template-flat-style_23-2147759383.jpg"
+        src="https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg"
         alt="error"
       />
     </div>

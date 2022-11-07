@@ -1,29 +1,73 @@
 import styled from "styled-components";
+import { useState } from "react";
 import NavBar from "../../components/Nav";
-import Heading from "../../components/Heading";
-import DefaultLayout from "../../layouts/DefaultLayout";
+// import DefaultLayout from "../../layouts/DefaultLayout";
 import Button from "../../components/Button";
-import Table from "../../components/Table/Table";
 
-const TopBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
+// import Table from "../../components/Table/Table";
+
+const H1 = styled.text`
+font-family: 'Bradley Hand';
+font-size: 23px;
+color: red;
+margin: 15px;
+display: flex;
+item-align: center;
 `;
 
+const List = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+  justify-content: center;
+`;
+
+
 const Members = () => {
-  return (
-    <div>
-      <NavBar />
-      <DefaultLayout>
-        <TopBar>
-          <Heading>Members List</Heading>
-          <Button>Add Member</Button>
-        </TopBar>
-        <div><Table></Table></div>
-      </DefaultLayout>
+    const [todoText, setTodoText] = useState("");
+    const [todos, setTodos] = useState(["Member List"]);
+
+    // useEffect(() => {
+    //     fetch("https://db-mysql-fra1-40885-do-user-12803898-0.b.db.ondigitalocean.com")
+    //       .then((resp) => resp.json())
+    //       .then((response) => {
+    //         setTodos(response);
+    //       })
+    //       .catch((error) => {
+    //         console.error(error);
+    //       });
+    //   }, []);
+    
+
+
+    const handleAddTodo = () => {
+        if (todoText) {
+          setTodos((prevTodos) => [...prevTodos, todoText]);
+          setTodoText("");
+        }
+      };
+
+return (
+<div>
+      <NavBar/>
+
+      <List>
+      <H1>Members List</H1>
+ 
+   
+      
+<input value={todoText} onChange={(event) => setTodoText(event.target.value)} />
+      <Button onClick={handleAddTodo}>Add ME</Button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index} style={{ color: todo.completed ? "green" : "red" }}>
+            {todo.title}
+          </li>
+        ))}
+      </ul>
+      </List>
     </div>
-  );
+);
 };
 
 export default Members;

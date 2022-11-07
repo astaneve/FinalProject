@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const ContainedButton = styled.button`
-  background: #eb5d05;
-  border: solid 2px #eb5d05;
+  background: #7393B3;
+  border: solid 2px #6F8FAF;
   padding: 6px 24px;
   color: #fff;
   border-radius: 4px;
+  font-family:'Oxygen';
   font-size: 13px;
   text-transform: uppercase;
   cursor: pointer;
@@ -29,9 +30,9 @@ const Outlined = styled(ContainedButton)`
     transform: scale(0.98);
   }`;
 
-const Button = ({ children, type }) => {
+const Button = ({ onClick, children, type }) => {
   if (type === "outlined") {
-    return <Outlined>{children}</Outlined>;
+    return <Outlined onClick={onClick}>{children}</Outlined>;
   } else {
     return <ContainedButton>{children}</ContainedButton>;
   }
