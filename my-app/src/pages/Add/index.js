@@ -1,8 +1,19 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../../components/Nav";
 import Button from "../../components/Button";
 
+
+const Paragraph = styled.text`
+font-family: 'Bradley Hand';
+font-size: 23px;
+color: red;
+margin: 15px;
+display: flex;
+text-align: center;
+align-items: center;
+justify-content: center;
+`;
 
 const StyledForm = styled.form`
   display: flex;
@@ -29,25 +40,60 @@ const StyledInput = styled.input`
   }
 `;
 
-const Add = (props) => {
+const AddMemberForm = (props) => {
     const [name, setName] = useState("");
+    const [loading, setLoading] = useState(true);
     const [email, setEmail] = useState("");
     const [age, setAge] = useState("");
 
-    const [memberList, setMemberList] = useState("");
+   
+
+    useEffect(() => {
+        fetch("https://localhost:3001/v1/members/")
+          .then((resp) => resp.json())
+          .then((response) => {
+            setName(response);
+            console.log("hello member");
+          })
+          .catch((err) => console.log(err))
+          .finally(() => setLoading(false));
+      }, [name]);
+    
+      const createConfirmEmail = (e) => {
+        setEmail("active");
+        setAge(e.target.parentElement.id);
+      };
+    
+      const handleExit = (e) => {
+        setEmail("hidden");
+        setAge("");
+      };
+    
+      const handleDeleteOrder = () => {
+        fetch("https://localhost:3001/v1/members/" + currentId, {
+          method: "DELETE",
+        })
+          .then((res) => res.text())
+          .then((res) => console.log(res));
+        setEmail("hidden");
+        setAge("");
+      };
     
 
-    const handleAddMember = () => {
-        if (memberList) {
-            setMemberList((prevList) => [...prevList, name, email, age]);
-        }
-      };
+
+
+
+
+
+
 
     return (
       <div>
       <NavBar/>
+      <Paragraph>
+      <h1>Join The Party!!!</h1>
+      </Paragraph>
       
-      <input value={memberList} onChange={(event) => setMemberList(event.target.value)} />
       <StyledForm onSubmit={(e) => props.addMember(e, name, email, age)}>
         <InputContainer>
           <label>Member Name</label>
@@ -76,18 +122,12 @@ const Add = (props) => {
         />
       </InputContainer>
 
-      <Button onClick={handleAddMember}>Add ME</Button>
+      <Button variable="contained">Add ME</Button>
     </StyledForm>
 
-    <ul>
-        {memberList.map((memberList, index) => (
-          <li key={index} style={{ color: memberList.completed ? "green" : "red" }}>
-            {memberList.title}
-          </li>
-        ))}
-      </ul>
+
     </div>
   );
 };
 
-export default Add;
+export default AddMemberForm;

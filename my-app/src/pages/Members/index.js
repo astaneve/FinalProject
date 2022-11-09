@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "../../components/Nav";
 // import DefaultLayout from "../../layouts/DefaultLayout";
 import Button from "../../components/Button";
@@ -27,16 +27,16 @@ const Members = () => {
     const [todoText, setTodoText] = useState("");
     const [todos, setTodos] = useState(["Member List"]);
 
-    // useEffect(() => {
-    //     fetch("https://db-mysql-fra1-40885-do-user-12803898-0.b.db.ondigitalocean.com")
-    //       .then((resp) => resp.json())
-    //       .then((response) => {
-    //         setTodos(response);
-    //       })
-    //       .catch((error) => {
-    //         console.error(error);
-    //       });
-    //   }, []);
+    useEffect(() => {
+        fetch("http://localhost:3001/members")
+          .then((resp) => resp.json())
+          .then((response) => {
+            setTodos(response);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }, []);
     
 
 

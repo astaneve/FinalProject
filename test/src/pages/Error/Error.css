@@ -1,0 +1,14 @@
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    user-select: none;
+    padding: 0 24px;
+  }
+  
+  .error img {
+    max-width: 600px;
+    width: 100%;
+  }
+  

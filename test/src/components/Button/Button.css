@@ -1,0 +1,28 @@
+.btn {
+    border: solid 1px #ddd;
+    background-color: #eee;
+    padding: 6px 12px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: #333;
+    font-family:'Oxygen';
+  }
+  
+  .btn:hover {
+    background-color: rgba(221, 221, 221, 0.6);
+  }
+  
+  .btn:active {
+    transform: scale(0.98);
+  }
+  
+  .btn.Yes:hover {
+    background-color: red;
+    color: #fff;
+  }
+  
+  .btn.No:hover {
+    color: #fff;
+    background-color: #009879;
+  }

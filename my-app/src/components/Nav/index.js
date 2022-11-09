@@ -36,7 +36,7 @@ const NavBar = () => {
   return (
     <Container>
       <Logo>
-        <p>Secret Santa events</p>
+        <p className="Logo">Secret Santa events</p>
       </Logo>
       <nav>
           <Button>

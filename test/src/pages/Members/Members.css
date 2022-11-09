@@ -1,0 +1,13 @@
+.List {
+    font-family: 'Bradley Hand';
+font-size: 23px;
+color: red;
+padding-top: 15px;
+display: flex;
+justify-content: center;
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+  }
