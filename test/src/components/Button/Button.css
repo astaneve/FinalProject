@@ -1,6 +1,6 @@
 .btn {
     border: solid 1px #ddd;
-    background-color: #eee;
+    background-color: #6F8FAF;
     padding: 6px 12px;
     border-radius: 5px;
     margin: 5px;
@@ -10,7 +10,7 @@
   }
   
   .btn:hover {
-    background-color: rgba(221, 221, 221, 0.6);
+    background-color: rgb(206, 234, 247);
   }
   
   .btn:active {

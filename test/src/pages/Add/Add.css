@@ -23,7 +23,8 @@ justify-content: center;
     width: 100%;
     border: solid 1px #ddd;
     padding: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 25px rgba(75, 116, 192, 0.15);
+    border-radius: 5px;
   }
   
   .add-container form div {
@@ -31,6 +32,8 @@ justify-content: center;
     flex-direction: column;
     margin-bottom: 15px;
     position: relative;
+    border-radius: 5px;
+   color: #6F8FAF;
   }
   
   .add-container form label {

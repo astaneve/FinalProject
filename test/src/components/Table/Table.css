@@ -3,8 +3,9 @@
     margin: 25px 0;
     font-size: 0.9em;
     min-width: 440px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(102, 116, 247, 0.15);
     font-family:'Oxygen';
+    border-radius: 5px;
   }
   
   .orders-table th,
@@ -28,7 +29,7 @@
   }
   
   .orders-table tbody tr:hover {
-    background-color: #00987a2f;
+    background-color: #b1e7f52f;
   }
   
   .order-table tbody tr {
@@ -41,5 +42,6 @@
   
   .order-table tbody tr:last-of-type {
     border-bottom: 2px solid #6F8FAF;
+    border-radius: 5px;
   }
   
